@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Glasses.Models.Glass>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Add Glasses</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.GName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Brand)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.GName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Brand.Brand_ID)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Glass_ID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Glass_ID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Glass_ID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
